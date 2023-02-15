@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emlamoth <emlamoth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 10:55:59 by emlamoth          #+#    #+#             */
-/*   Updated: 2023/02/02 09:24:03 by emlamoth         ###   ########.fr       */
+/*   Created: 2023/01/23 17:41:46 by emlamoth          #+#    #+#             */
+/*   Updated: 2023/02/15 13:38:14 by emlamoth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*The ft_strchr function searches for the first occurrence of the character
-<c> (an unsigned char) in the string pointed to by the argument <s>.*/
-char	*ft_strchr(const char *s, int c)
+int	ft_putstr(char *str)
 {
 	int	i;
 
 	i = 0;
-	if (!s)
-		return (NULL);
-	while (s[i])
-	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
-		i++;
-	}
-	if (s[i] == (char)c)
-		return ((char *)s + i);
-	return (NULL);
+	if (!str)
+		return (write (1, "(null)", 6));
+	while (str[i])
+		ft_putchar(str[i++]);
+	return (i);
 }

@@ -1,33 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_hex.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emlamoth <emlamoth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 10:55:59 by emlamoth          #+#    #+#             */
-/*   Updated: 2023/02/02 09:24:03 by emlamoth         ###   ########.fr       */
+/*   Created: 2023/01/23 17:41:35 by emlamoth          #+#    #+#             */
+/*   Updated: 2023/02/15 13:21:28 by emlamoth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*The ft_strchr function searches for the first occurrence of the character
-<c> (an unsigned char) in the string pointed to by the argument <s>.*/
-char	*ft_strchr(const char *s, int c)
+static int	countnb(uintptr_t n)
 {
 	int	i;
 
 	i = 0;
-	if (!s)
-		return (NULL);
-	while (s[i])
+	if (n == 0)
+		return (1);
+	while (n != 0)
 	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
+		n /= 16;
 		i++;
 	}
-	if (s[i] == (char)c)
-		return ((char *)s + i);
-	return (NULL);
+	return (i);
+}
+
+int	ft_putnbr_hex(uintptr_t n, char c)
+{
+	unsigned int	count;
+	char			*base;
+	char			*base2;
+
+	count = 0;
+	base = "0123456789abcdef";
+	base2 = "0123456789ABCDEF";
+	if (c == 'X')
+		base = base2;
+	if (n < 16)
+		write (1, &base[n], 1);
+	else
+	{
+		ft_putnbr_hex(n / 16, c);
+		ft_putnbr_hex(n % 16, c);
+	}
+	count = countnb(n);
+	return (count);
 }
