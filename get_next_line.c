@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emlamoth <emlamoth@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emman <emman@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:19:49 by emlamoth          #+#    #+#             */
-/*   Updated: 2023/02/15 09:57:27 by emlamoth         ###   ########.fr       */
+/*   Updated: 2023/04/24 21:57:51 by emman            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,7 @@
 # define BUFFER_SIZE 2048
 #endif
 
-char	*ft_join_free(char *stack, char *buf)
-{
-	unsigned int	lens1;
-	unsigned int	lens2;
-	char			*newstack;
-
-	lens1 = ft_strlen(stack);
-	lens2 = ft_strlen(buf);
-	newstack = malloc((lens1 + lens2 + 1) * (sizeof(char)));
-	if (!newstack)
-		return (NULL);
-	ft_memcpy(newstack, stack, lens1);
-	ft_memcpy(newstack + lens1, buf, lens2);
-	newstack[lens1 + lens2] = '\0';
-	free(stack);
-	return (newstack);
-}
-
-char	*ft_stack(int fd, char *stack)
+static char	*ft_stack(int fd, char *stack)
 {
 	char	*buf;
 	int		ret;
@@ -54,13 +36,13 @@ char	*ft_stack(int fd, char *stack)
 			return (NULL);
 		}
 		buf[ret] = '\0';
-		stack = ft_join_free(stack, buf);
+		stack = ft_strjoin(stack, buf, 1);
 	}
 	free(buf);
 	return (stack);
 }
 
-char	*ft_over(char *stack)
+static char	*ft_over(char *stack)
 {
 	int		i;
 	int		j;
@@ -86,7 +68,7 @@ char	*ft_over(char *stack)
 	return (line);
 }
 
-char	*ft_line(char *stack)
+static char	*ft_line(char *stack)
 {
 	char	*line;
 	int		i;
@@ -113,17 +95,19 @@ char	*ft_line(char *stack)
 	return (line);
 }
 
+/*This function reads a line from a file descriptor and returns 
+it as a string. */
 char	*get_next_line(int fd)
 {
 	char		*line;
-	char static	*stack[OPEN_MAX];
+	static char	*stack;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	stack[fd] = ft_stack(fd, stack[fd]);
-	if (!stack[fd])
+	stack = ft_stack(fd, stack);
+	if (!stack)
 		return (NULL);
-	line = ft_line(stack[fd]);
-	stack[fd] = ft_over(stack[fd]);
+	line = ft_line(stack);
+	stack = ft_over(stack);
 	return (line);
 }

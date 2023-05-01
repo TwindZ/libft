@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_freeall.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emman <emman@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emlamoth <emlamoth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 17:41:46 by emlamoth          #+#    #+#             */
-/*   Updated: 2023/04/24 21:46:55 by emman            ###   ########.fr       */
+/*   Created: 2023/02/20 12:43:06 by emlamoth          #+#    #+#             */
+/*   Updated: 2023/04/25 10:37:34 by emlamoth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*This function writes a string to the standard output. */
-int	ft_putstr(char *str)
+/*This function frees all memory allocated for a two-dimensional 
+array using malloc.*/
+char	**ft_freeall(char **tab)
 {
 	int	i;
 
 	i = 0;
-	if (!str)
-		return (write (1, "(null)", 6));
-	while (str[i])
-		ft_putchar(str[i++]);
-	return (i);
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+	return (NULL);
 }

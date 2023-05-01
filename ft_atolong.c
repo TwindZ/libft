@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atolong.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emlamoth <emlamoth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:29:06 by emlamoth          #+#    #+#             */
-/*   Updated: 2023/05/01 16:46:52 by emlamoth         ###   ########.fr       */
+/*   Updated: 2023/05/01 16:43:40 by emlamoth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 /*The ft_atoi() function converts the initial portion of the string
 pointed to by <str> to int.*/
-int	ft_atoi(const char *str)
+long int	ft_atolong(const char *str)
 {
-	int	i;
-	int	s;
-	int	num;
+	int			i;
+	int			s;
+	long int	num;
 
 	i = 0;
 	s = 1;

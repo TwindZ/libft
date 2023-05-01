@@ -50,22 +50,37 @@ SRC =	ft_isalnum.c	\
 		ft_putnbr.c			\
 		ft_putnbr_un.c		\
 		ft_putnbr_hex.c		\
-
-OBJS = $(SRC:%.c=%.o)
+		ft_freeall.c		\
+		ft_atolong.c		\
+		
+OBJS_DIR = libft_objs/
+OBJS = $(SRC:%.c=$(OBJS_DIR)%.o)
 
 CFLAGS = -Wall -Wextra -Werror
 
 CC = gcc
 
-all: $(NAME) $(OBJS)
+GREEN = \033[1;32m
+RED = \033[1;31m
+NC = \033[0;0m
+
+all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar -rc $(NAME) $(OBJS)
+	@ar -rc $(NAME) $(OBJS)
+	@echo "${GREEN}LIBFT COMPILED${NC}"
+
+$(OBJS_DIR)%.o:%.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -c -o $@ $<
+
 clean:
-	rm -f $(OBJS)
+	@rm -rf $(OBJS_DIR)
+	@echo "${RED}LIBFT OBJECTS DELETED${NC}"
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "${RED}LIBFT DELETED${NC}"
 
 re: fclean all
 

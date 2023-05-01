@@ -3,20 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emlamoth <emlamoth@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emman <emman@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 17:41:19 by emlamoth          #+#    #+#             */
-/*   Updated: 2023/02/15 13:39:44 by emlamoth         ###   ########.fr       */
+/*   Updated: 2023/04/24 21:36:31 by emman            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*This function writes formatted output to the stdout stream. 
+Returns the number of characters written. Format strings can include 
+placeholders for various data types, such as integers, pointers adresses, 
+and strings. */
 int	ft_convert(const char *str, int i, va_list arg)
 {
-	int	count;
-
-	count = 0;
 	if (str[i] == '%')
 		return (ft_putchar('%'));
 	else if (str[i] == 'c')
