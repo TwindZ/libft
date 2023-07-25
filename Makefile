@@ -52,6 +52,9 @@ SRC =	ft_isalnum.c	\
 		ft_putnbr_hex.c		\
 		ft_freeall.c		\
 		ft_atolong.c		\
+		ft_isspace.c		\
+		ft_tabdup.c			\
+		ft_freenull.c		\
 		
 OBJS_DIR = libft_objs/
 OBJS = $(SRC:%.c=$(OBJS_DIR)%.o)

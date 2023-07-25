@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_freeall.c                                       :+:      :+:    :+:   */
+/*   ft_freenull.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbouchar <fbouchar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emlamoth <emlamoth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/20 12:43:06 by emlamoth          #+#    #+#             */
-/*   Updated: 2023/06/29 13:47:11 by fbouchar         ###   ########.fr       */
+/*   Created: 2023/07/18 17:30:26 by emlamoth          #+#    #+#             */
+/*   Updated: 2023/07/18 17:42:04 by emlamoth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*This function frees all memory allocated for a two-dimensional 
-array using malloc.*/
-char	**ft_freeall(char **ar)
+/*Take the address of a char * (&ptr)*/
+void	ft_freenull(char **ptr)
 {
-	int	i;
-
-	i = 0;
-	while (ar[i])
-	{
-		free(ar[i]);
-		ar[i] = NULL;
-		i++;
-	}
-	free(ar);
-	ar = NULL;
-	return (NULL);
+	if (*ptr != NULL)
+		free(*ptr);
+	*ptr = NULL;
 }

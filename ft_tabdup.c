@@ -1,22 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_tabdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emlamoth <emlamoth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/06 16:22:03 by emlamoth          #+#    #+#             */
-/*   Updated: 2023/06/29 10:00:21 by emlamoth         ###   ########.fr       */
+/*   Created: 2023/07/17 18:57:49 by emman             #+#    #+#             */
+/*   Updated: 2023/07/25 09:27:47 by emlamoth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*The ft_isdigit() function returns 1 if the character passed is a digit,
-otherwise it returns zero.*/
-int	ft_isdigit(int c)
+static int	ft_tabsize(char **src)
 {
-	if (c >= 48 && c <= 57)
-		return (1);
-	return (0);
+	int	i;
+	int	count;
+
+	count = 0;
+	i = 0;
+	while (src[i++])
+		count++;
+	return (count);
+}
+
+char	**ft_tabdup(char **src)
+{
+	int		i;
+	char	**new;
+
+	i = 0;
+	new = NULL;
+	new = ft_calloc(ft_tabsize(src) + 1, sizeof(char *));
+	if (!new)
+		return (NULL);
+	while (src[i])
+	{
+		new[i] = ft_strdup(src[i]);
+		if(!new[i])
+		{
+			ft_freeall(new);
+			return (NULL);
+		}	
+		i++;
+	}
+	return (new);
 }

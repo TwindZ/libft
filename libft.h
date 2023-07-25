@@ -6,7 +6,7 @@
 /*   By: emlamoth <emlamoth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:55:14 by emlamoth          #+#    #+#             */
-/*   Updated: 2023/05/01 16:48:54 by emlamoth         ###   ########.fr       */
+/*   Updated: 2023/07/18 17:31:09 by emlamoth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ t_list		*ft_lstlast(t_list *lst);
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize);
+size_t		ft_strlcpy2(char *dst, char *src, size_t dstsize);
 size_t		ft_strlcat(char *dst, const char *src, size_t dstsize);
 size_t		ft_strlen(const char *str);
 
@@ -52,6 +53,7 @@ void		*ft_calloc(size_t count, size_t size);
 
 long int	ft_atolong(const char *str);
 int			ft_atoi(const char *str);
+int			ft_isspace(char c);
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);
 int			ft_isalnum(int c);
@@ -81,6 +83,9 @@ char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char		*get_next_line(int fd);
 
 char		**ft_split(char const *s, char c);
-char		**ft_freeall(char **tab);
+char		**ft_freeall(char **ar);
+
+char		**ft_tabdup(char **src);
+void		ft_freenull(char **ptr);
 
 #endif

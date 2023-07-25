@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_freeall.c                                       :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbouchar <fbouchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/20 12:43:06 by emlamoth          #+#    #+#             */
-/*   Updated: 2023/06/29 13:47:11 by fbouchar         ###   ########.fr       */
+/*   Created: 2023/07/13 16:29:18 by emlamoth          #+#    #+#             */
+/*   Updated: 2023/07/17 09:56:41 by fbouchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*This function frees all memory allocated for a two-dimensional 
-array using malloc.*/
-char	**ft_freeall(char **ar)
+int	ft_isspace(char c)
 {
-	int	i;
-
-	i = 0;
-	while (ar[i])
-	{
-		free(ar[i]);
-		ar[i] = NULL;
-		i++;
-	}
-	free(ar);
-	ar = NULL;
-	return (NULL);
+	if ((c >= 9 && c <= 13) || c == ' ')
+		return (1);
+	return (0);
 }
