@@ -6,7 +6,7 @@
 /*   By: emlamoth <emlamoth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:55:14 by emlamoth          #+#    #+#             */
-/*   Updated: 2023/07/18 17:31:09 by emlamoth         ###   ########.fr       */
+/*   Updated: 2023/07/25 09:34:08 by emlamoth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void		ft_lstclear(t_list **lst, void (*del)(void*));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 void		ft_bzero(void *s, size_t n);
 void		ft_striteri(char *s, void (*f)(unsigned int, char*));
+void		ft_freenull(char **ptr);
 
 void		*ft_memchr(const void *s, int c, size_t n);
 void		*ft_memcpy(void *dst, const void *src, size_t n);
@@ -84,8 +85,6 @@ char		*get_next_line(int fd);
 
 char		**ft_split(char const *s, char c);
 char		**ft_freeall(char **ar);
-
 char		**ft_tabdup(char **src);
-void		ft_freenull(char **ptr);
 
 #endif

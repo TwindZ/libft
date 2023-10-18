@@ -1,0 +1,4 @@
+libft_objs/
+libft.a
+.vscode/
+.DSstore/
